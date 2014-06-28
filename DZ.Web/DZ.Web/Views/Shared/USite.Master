@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<asp:Content ID="aboutTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    <link href="../../Content/uc.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="UCHead" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="aboutContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="uc-body">
+        <table style="width: 100%;">
+            <tr>
+                <td width="170px" valign="top">
+                    <div class="uc-aside">
+                        <div class="uc-nav">
+                            <ul>
+                                <li>
+                                    <%:Html.ActionLink("个人中心","Index","U") %></li>
+                                <li>
+                                    <%:Html.ActionLink("我的头像", "UserAvatar", "U")%></li>
+                                <li>
+                                    <%:Html.ActionLink("个人信息", "UserInfo", "U")%></li>
+                                <li>
+                                    <%:Html.ActionLink("联系方式", "UserContact", "U")%></li>
+                                <li>
+                                    <%:Html.ActionLink("发布文章","PostArticle","U") %></li>
+                                <li>
+                                    <%:Html.ActionLink("我的文章","Articles","U") %></li>
+                                <li>
+                                    <%:Html.ActionLink("我的收藏", "CollectArticles", "U")%></li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+                <td valign="top" style="padding: 0px; margin: 0px">
+                    <div class="uc-main">
+                        <asp:ContentPlaceHolder ID="UCMainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</asp:Content>

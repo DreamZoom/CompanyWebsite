@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="db_companyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="db_companyModelStoreContainer">
+          <EntitySet Name="tAccount" EntityType="db_companyModel.Store.tAccount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tArticle" EntityType="db_companyModel.Store.tArticle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tCategory" EntityType="db_companyModel.Store.tCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tCategoryArticle" EntityType="db_companyModel.Store.tCategoryArticle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tTags" EntityType="db_companyModel.Store.tTags" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tTagsArticle" EntityType="db_companyModel.Store.tTagsArticle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tUserArticle" EntityType="db_companyModel.Store.tUserArticle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tUserAvatar" EntityType="db_companyModel.Store.tUserAvatar" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tUserCollect" EntityType="db_companyModel.Store.tUserCollect" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tUserContact" EntityType="db_companyModel.Store.tUserContact" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tUserInfo" EntityType="db_companyModel.Store.tUserInfo" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tCategoryArticle_tArticle" Association="db_companyModel.Store.FK_tCategoryArticle_tArticle">
+            <End Role="tArticle" EntitySet="tArticle" />
+            <End Role="tCategoryArticle" EntitySet="tCategoryArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tCategoryArticle_tCategory" Association="db_companyModel.Store.FK_tCategoryArticle_tCategory">
+            <End Role="tCategory" EntitySet="tCategory" />
+            <End Role="tCategoryArticle" EntitySet="tCategoryArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tTagsArticle_tArticle" Association="db_companyModel.Store.FK_tTagsArticle_tArticle">
+            <End Role="tArticle" EntitySet="tArticle" />
+            <End Role="tTagsArticle" EntitySet="tTagsArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tTagsArticle_tTags" Association="db_companyModel.Store.FK_tTagsArticle_tTags">
+            <End Role="tTags" EntitySet="tTags" />
+            <End Role="tTagsArticle" EntitySet="tTagsArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tUserCollect_tAccount" Association="db_companyModel.Store.FK_tUserCollect_tAccount">
+            <End Role="tAccount" EntitySet="tAccount" />
+            <End Role="tUserCollect" EntitySet="tUserCollect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tUserCollect_tArticle" Association="db_companyModel.Store.FK_tUserCollect_tArticle">
+            <End Role="tArticle" EntitySet="tArticle" />
+            <End Role="tUserCollect" EntitySet="tUserCollect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserArticle_tAccount" Association="db_companyModel.Store.FK_UserArticle_tAccount">
+            <End Role="tAccount" EntitySet="tAccount" />
+            <End Role="tUserArticle" EntitySet="tUserArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserArticle_tArticle" Association="db_companyModel.Store.FK_UserArticle_tArticle">
+            <End Role="tArticle" EntitySet="tArticle" />
+            <End Role="tUserArticle" EntitySet="tUserArticle" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="RegisterTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tArticle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Author" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="ReadCount" Type="int" Nullable="false" />
+          <Property Name="UpCount" Type="int" Nullable="false" />
+          <Property Name="DownCount" Type="int" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CategoryPath" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CategorySort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tCategoryArticle">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tTags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TagName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ClickCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tTagsArticle">
+          <Key>
+            <PropertyRef Name="TagId" />
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="TagId" Type="int" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tUserArticle">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tUserAvatar">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SmallAvatar" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="BigAvatar" Type="nvarchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tUserCollect">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tUserContact">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="QQ" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="MSN" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tUserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RealName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="4" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Post" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_tCategoryArticle_tArticle">
+          <End Role="tArticle" Type="db_companyModel.Store.tArticle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tCategoryArticle" Type="db_companyModel.Store.tCategoryArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tArticle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tCategoryArticle">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tCategoryArticle_tCategory">
+          <End Role="tCategory" Type="db_companyModel.Store.tCategory" Multiplicity="1" />
+          <End Role="tCategoryArticle" Type="db_companyModel.Store.tCategoryArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tCategoryArticle">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tTagsArticle_tArticle">
+          <End Role="tArticle" Type="db_companyModel.Store.tArticle" Multiplicity="1" />
+          <End Role="tTagsArticle" Type="db_companyModel.Store.tTagsArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tArticle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tTagsArticle">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tTagsArticle_tTags">
+          <End Role="tTags" Type="db_companyModel.Store.tTags" Multiplicity="1" />
+          <End Role="tTagsArticle" Type="db_companyModel.Store.tTagsArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tTags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tTagsArticle">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tUserCollect_tAccount">
+          <End Role="tAccount" Type="db_companyModel.Store.tAccount" Multiplicity="1" />
+          <End Role="tUserCollect" Type="db_companyModel.Store.tUserCollect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tUserCollect">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tUserCollect_tArticle">
+          <End Role="tArticle" Type="db_companyModel.Store.tArticle" Multiplicity="1" />
+          <End Role="tUserCollect" Type="db_companyModel.Store.tUserCollect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tArticle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tUserCollect">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserArticle_tAccount">
+          <End Role="tAccount" Type="db_companyModel.Store.tAccount" Multiplicity="1" />
+          <End Role="tUserArticle" Type="db_companyModel.Store.tUserArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tUserArticle">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserArticle_tArticle">
+          <End Role="tArticle" Type="db_companyModel.Store.tArticle" Multiplicity="1" />
+          <End Role="tUserArticle" Type="db_companyModel.Store.tUserArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tArticle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tUserArticle">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_companyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="db_companyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tAccounts" EntityType="db_companyModel.tAccount" />
+          <EntitySet Name="tArticles" EntityType="db_companyModel.tArticle" />
+          <EntitySet Name="tCategories" EntityType="db_companyModel.tCategory" />
+          <EntitySet Name="tTags" EntityType="db_companyModel.tTag" />
+          <AssociationSet Name="tCategoryArticle" Association="db_companyModel.tCategoryArticle">
+            <End Role="tArticle" EntitySet="tArticles" />
+            <End Role="tCategory" EntitySet="tCategories" />
+          </AssociationSet>
+          <AssociationSet Name="tTagsArticle" Association="db_companyModel.tTagsArticle">
+            <End Role="tArticle" EntitySet="tArticles" />
+            <End Role="tTag" EntitySet="tTags" />
+          </AssociationSet>
+          <AssociationSet Name="tUserArticle" Association="db_companyModel.tUserArticle">
+            <End Role="tAccount" EntitySet="tAccounts" />
+            <End Role="tArticle" EntitySet="tArticles" />
+          </AssociationSet>
+          <EntitySet Name="tUserAvatars" EntityType="db_companyModel.tUserAvatar" />
+          <EntitySet Name="tUserContacts" EntityType="db_companyModel.tUserContact" />
+          <EntitySet Name="tUserInfoes" EntityType="db_companyModel.tUserInfo" />
+          <AssociationSet Name="tUserCollect" Association="db_companyModel.tUserCollect">
+            <End Role="tAccount" EntitySet="tAccounts" />
+            <End Role="tArticle" EntitySet="tArticles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="RegisterTime" Nullable="false" />
+          <NavigationProperty Name="tArticles" Relationship="db_companyModel.tUserArticle" FromRole="tAccount" ToRole="tArticle" />
+          <NavigationProperty Name="CollectArticles" Relationship="db_companyModel.tUserCollect" FromRole="tAccount" ToRole="tArticle" />
+        </EntityType>
+        <EntityType Name="tArticle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Author" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="Int32" Name="ReadCount" Nullable="false" />
+          <Property Type="Int32" Name="UpCount" Nullable="false" />
+          <Property Type="Int32" Name="DownCount" Nullable="false" />
+          <Property Type="Int32" Name="State" Nullable="false" />
+          <NavigationProperty Name="tCategories" Relationship="db_companyModel.tCategoryArticle" FromRole="tArticle" ToRole="tCategory" />
+          <NavigationProperty Name="tTags" Relationship="db_companyModel.tTagsArticle" FromRole="tArticle" ToRole="tTag" />
+          <NavigationProperty Name="tAccounts" Relationship="db_companyModel.tUserArticle" FromRole="tArticle" ToRole="tAccount" />
+          <NavigationProperty Name="tAccounts1" Relationship="db_companyModel.tUserCollect" FromRole="tArticle" ToRole="tAccount" />
+        </EntityType>
+        <EntityType Name="tCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ParentId" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CategoryPath" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CategorySort" Nullable="false" />
+          <NavigationProperty Name="tArticles" Relationship="db_companyModel.tCategoryArticle" FromRole="tCategory" ToRole="tArticle" />
+        </EntityType>
+        <EntityType Name="tTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TagName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ClickCount" Nullable="false" />
+          <NavigationProperty Name="tArticles" Relationship="db_companyModel.tTagsArticle" FromRole="tTag" ToRole="tArticle" />
+        </EntityType>
+        <Association Name="tCategoryArticle">
+          <End Type="db_companyModel.tArticle" Role="tArticle" Multiplicity="*" />
+          <End Type="db_companyModel.tCategory" Role="tCategory" Multiplicity="*" />
+        </Association>
+        <Association Name="tTagsArticle">
+          <End Type="db_companyModel.tArticle" Role="tArticle" Multiplicity="*" />
+          <End Type="db_companyModel.tTag" Role="tTag" Multiplicity="*" />
+        </Association>
+        <Association Name="tUserArticle">
+          <End Type="db_companyModel.tAccount" Role="tAccount" Multiplicity="*" />
+          <End Type="db_companyModel.tArticle" Role="tArticle" Multiplicity="*" />
+        </Association>
+        <EntityType Name="tUserAvatar">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="SmallAvatar" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BigAvatar" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tUserContact">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="QQ" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MSN" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tUserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="RealName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Sex" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Birthday" />
+          <Property Type="String" Name="Post" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="tUserCollect">
+          <End Type="db_companyModel.tAccount" Role="tAccount" Multiplicity="*" />
+          <End Type="db_companyModel.tArticle" Role="tArticle" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_companyModelStoreContainer" CdmEntityContainer="db_companyEntities">
+          <EntitySetMapping Name="tAccounts">
+            <EntityTypeMapping TypeName="db_companyModel.tAccount">
+              <MappingFragment StoreEntitySet="tAccount">
+                <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tArticles">
+            <EntityTypeMapping TypeName="db_companyModel.tArticle">
+              <MappingFragment StoreEntitySet="tArticle">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="DownCount" ColumnName="DownCount" />
+                <ScalarProperty Name="UpCount" ColumnName="UpCount" />
+                <ScalarProperty Name="ReadCount" ColumnName="ReadCount" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCategories">
+            <EntityTypeMapping TypeName="db_companyModel.tCategory">
+              <MappingFragment StoreEntitySet="tCategory">
+                <ScalarProperty Name="CategorySort" ColumnName="CategorySort" />
+                <ScalarProperty Name="CategoryPath" ColumnName="CategoryPath" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tTags">
+            <EntityTypeMapping TypeName="db_companyModel.tTag">
+              <MappingFragment StoreEntitySet="tTags">
+                <ScalarProperty Name="ClickCount" ColumnName="ClickCount" />
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tCategoryArticle" TypeName="db_companyModel.tCategoryArticle" StoreEntitySet="tCategoryArticle">
+            <EndProperty Name="tCategory">
+              <ScalarProperty Name="Id" ColumnName="CategoryId" />
+            </EndProperty>
+            <EndProperty Name="tArticle">
+              <ScalarProperty Name="Id" ColumnName="ArticleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tTagsArticle" TypeName="db_companyModel.tTagsArticle" StoreEntitySet="tTagsArticle">
+            <EndProperty Name="tTag">
+              <ScalarProperty Name="Id" ColumnName="TagId" />
+            </EndProperty>
+            <EndProperty Name="tArticle">
+              <ScalarProperty Name="Id" ColumnName="ArticleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tUserArticle" TypeName="db_companyModel.tUserArticle" StoreEntitySet="tUserArticle">
+            <EndProperty Name="tArticle">
+              <ScalarProperty Name="Id" ColumnName="ArticleId" />
+            </EndProperty>
+            <EndProperty Name="tAccount">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="tUserAvatars">
+            <EntityTypeMapping TypeName="db_companyModel.tUserAvatar">
+              <MappingFragment StoreEntitySet="tUserAvatar">
+                <ScalarProperty Name="BigAvatar" ColumnName="BigAvatar" />
+                <ScalarProperty Name="SmallAvatar" ColumnName="SmallAvatar" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tUserContacts">
+            <EntityTypeMapping TypeName="db_companyModel.tUserContact">
+              <MappingFragment StoreEntitySet="tUserContact">
+                <ScalarProperty Name="MSN" ColumnName="MSN" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tUserInfoes">
+            <EntityTypeMapping TypeName="db_companyModel.tUserInfo">
+              <MappingFragment StoreEntitySet="tUserInfo">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tUserCollect" TypeName="db_companyModel.tUserCollect" StoreEntitySet="tUserCollect">
+            <EndProperty Name="tArticle">
+              <ScalarProperty Name="Id" ColumnName="ArticleId" />
+            </EndProperty>
+            <EndProperty Name="tAccount">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Company">
+        <EntityTypeShape EntityType="db_companyModel.tAccount" Width="1.5" PointX="0.75" PointY="2.375" Height="2.1610522460937496" />
+        <EntityTypeShape EntityType="db_companyModel.tArticle" Width="1.5" PointX="3" PointY="1.75" Height="3.3071704101562531" />
+        <EntityTypeShape EntityType="db_companyModel.tCategory" Width="1.5" PointX="5.25" PointY="1" Height="2.1610522460937531" />
+        <EntityTypeShape EntityType="db_companyModel.tTag" Width="1.5" PointX="5.25" PointY="4" Height="1.7790128580729174" />
+        <AssociationConnector Association="db_companyModel.tCategoryArticle" >
+          <ConnectorPoint PointX="4.5" PointY="2.4555261230468766" />
+          <ConnectorPoint PointX="5.25" PointY="2.4555261230468766" />
+        </AssociationConnector>
+        <AssociationConnector Association="db_companyModel.tTagsArticle" >
+          <ConnectorPoint PointX="4.5" PointY="4.6240950520833328" />
+          <ConnectorPoint PointX="5.25" PointY="4.6240950520833328" />
+        </AssociationConnector>
+        <AssociationConnector Association="db_companyModel.tUserArticle" >
+          <ConnectorPoint PointX="2.25" PointY="3.5510359700520828" />
+          <ConnectorPoint PointX="3" PointY="3.5510359700520828" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="db_companyModel.tUserAvatar" Width="1.5" PointX="0.75" PointY="6.75" Height="1.5879931640624996" />
+        <EntityTypeShape EntityType="db_companyModel.tUserContact" Width="1.5" PointX="2.75" PointY="6.75" Height="1.9700325520833317" />
+        <EntityTypeShape EntityType="db_companyModel.tUserInfo" Width="1.5" PointX="4.75" PointY="6.75" Height="2.1610522460937496" />
+        <AssociationConnector Association="db_companyModel.tUserCollect" ManuallyRouted="true" >
+          <ConnectorPoint PointX="2.25" PointY="2.9005179850260414" />
+          <ConnectorPoint PointX="3" PointY="2.9005179850260414" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

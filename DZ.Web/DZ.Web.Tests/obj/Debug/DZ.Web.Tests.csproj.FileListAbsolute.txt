@@ -1,0 +1,10 @@
+D:\DreamZoom\DZ.Web\DZ.Web.Tests\bin\Debug\DZ.Web.Tests.dll.config
+D:\DreamZoom\DZ.Web\DZ.Web.Tests\bin\Debug\DZ.Web.Tests.dll
+D:\DreamZoom\DZ.Web\DZ.Web.Tests\bin\Debug\DZ.Web.Tests.pdb
+D:\DreamZoom\DZ.Web\DZ.Web.Tests\bin\Debug\DZ.Web.dll
+D:\DreamZoom\DZ.Web\DZ.Web.Tests\bin\Debug\DZ.Web.pdb
+D:\DreamZoom\DZ.Web\DZ.Web.Tests\obj\Debug\ResolveAssemblyReference.cache
+D:\DreamZoom\DZ.Web\DZ.Web.Tests\obj\Debug\DZ.Web.Tests.dll
+D:\DreamZoom\DZ.Web\DZ.Web.Tests\obj\Debug\DZ.Web.Tests.pdb
+D:\DreamZoom\DZ.Web\DZ.Web.Tests\bin\Debug\LitJSON.dll
+D:\DreamZoom\DZ.Web\DZ.Web.Tests\bin\Debug\MvcPager.dll

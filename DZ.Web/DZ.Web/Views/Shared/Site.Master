@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/KindEditor/plugins/code/prettify.css" rel="stylesheet"
+        type="text/css" />
+</head>
+<body>
+    <div class="page">
+        <div class="page-top center">
+            <span class="right">
+                <% Html.RenderPartial("LogOnUserControl"); %>
+            </span>
+        </div>
+        <div id="header" class="center header">
+            <div id="title" class="title">
+                <h1>
+                    梦幻空间</h1>
+            </div>
+        </div>
+        <div class="navbar">
+            <div class="center">
+                <ul class="navigation">
+                    <li>
+                        <%: Html.ActionLink("首页", "Index", "Home")%></li>
+                    <li>
+                        <%: Html.ActionLink("阅读排行", "ReadRank", "T")%></li>
+                    <li>
+                        <%: Html.ActionLink("精品推荐", "UpRank", "T")%></li>
+                    <li>
+                        <%: Html.ActionLink("个人中心", "Index", "U")%></li>
+                    <li>
+                        <%: Html.ActionLink("管理中心", "Index", "Management")%></li>
+                </ul>
+            </div>
+        </div>
+        <div id="main" class="center main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div id="footer" class="footer">
+            dreamzoom.com
+        </div>
+    </div>
+</body>
+</html>

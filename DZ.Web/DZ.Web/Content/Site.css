@@ -1,0 +1,531 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+*
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+body
+{
+    font-size: .75em;
+    font-family: Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+}
+
+a:link
+{
+    color: #034af3;
+    text-decoration: underline;
+}
+a:visited
+{
+    color: #505abc;
+}
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: none;
+}
+a:active
+{
+    color: #12eb87;
+}
+
+
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1
+{
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+h2
+{
+    padding: 0 0 10px 0;
+}
+h3
+{
+    font-size: 1.2em;
+}
+h4
+{
+    font-size: 1.1em;
+}
+h5, h6
+{
+    font-size: 1em;
+}
+
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+.page-top
+{
+}
+.left
+{
+    float: left;
+}
+.right
+{
+    float: right;
+}
+.clear
+{
+    clear: both;
+}
+.page
+{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.center
+{
+    margin: auto;
+    width: 80%;
+}
+
+.header
+{
+    padding: 10px;
+}
+.header .title
+{
+    padding: 10px;
+}
+.main
+{
+    padding: 10px;
+    min-height: 400px;
+}
+
+.footer
+{
+    padding: 10px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #CCCCCC;
+    text-align: center;
+    color: #999999;
+}
+/* TAB MENU   
+----------------------------------------------------------*/
+
+.navbar
+{
+    background-color: #19a97b;
+}
+.navigation
+{
+    position: relative;
+    text-align: left;
+    border-left: 1px solid #139667;
+    white-space: normal;
+    letter-spacing: normal;
+    word-spacing: normal;
+    font-size: 0px;
+    text-decoration: none;
+}
+
+.navigation li
+{
+    display: inline-block;
+    zoom: 1;
+    padding: 0px;
+    margin: 0px;
+    width: 118px;
+    list-style: none;
+    border-right: 1px solid #139667;
+    font-size: 18px;
+}
+
+
+.navigation li a
+{
+    font-family: '微软雅黑';
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    left: 0px;
+    z-index: 1;
+    color: #fff !important;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    -ms-transition: background-color .3s;
+    -o-transition: background-color .3s;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+}
+
+.navigation li a:hover
+{
+    background-color: #006666;
+    text-decoration: none;
+}
+
+.navigation li a:active
+{
+    background-color: #a6e2a6;
+    text-decoration: none;
+}
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset
+{
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid #CCC;
+}
+
+fieldset p
+{
+    margin: 2px 12px 10px 10px;
+}
+
+legend
+{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+}
+
+input[type="text"]
+{
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+input[type="password"]
+{
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+/* TABLE
+----------------------------------------------------------*/
+
+table
+{
+    border: solid 1px #e8eef4;
+    border-collapse: collapse;
+}
+
+table td
+{
+    padding: 5px;
+    border: solid 1px #e8eef4;
+}
+
+table th
+{
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #e8eef4;
+    border: solid 1px #e8eef4;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear
+{
+    clear: both;
+}
+
+.error
+{
+    color: Red;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label, .editor-label, .display-field, .editor-field
+{
+    margin: 0.5em 0;
+}
+
+.text-box
+{
+    width: 30em;
+}
+
+.text-box.multi-line
+{
+    height: 6.5em;
+}
+
+.tri-state
+{
+    width: 6em;
+}
+
+ul
+{
+    list-style-type: none;
+}
+li
+{
+    list-style-type: none;
+}
+
+input
+{
+    padding: 5px;
+    border: 1px solid #CCCCCC;
+}
+.buttom
+{
+    padding: 5px 8px;
+    border: 1px solid #CCCCCC;
+}
+
+.buttom:hover
+{
+    background-color: #006699;
+}
+
+.msg-success
+{
+    margin: 10px 0px;
+    padding: 10px;
+    border: 1px solid #006699;
+}
+
+.msg-error
+{
+    margin: 10px 0px;
+    padding: 10px;
+    border: 1px solid #FF3300;
+}
+
+
+.article-details
+{
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.article-details .title
+{
+    padding: 5px;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-bottom-color: #C0C0C0;
+    color: #000000;
+}
+.article-details .title a
+{
+    text-decoration: none;
+    color: #000000;
+}
+.article-details .content
+{
+    padding: 10px;
+    font-family: 宋体, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    word-spacing: 4em;
+}
+
+.article-details .other
+{
+    color: #C0C0C0;
+    padding: 5px;
+    font-size: 10px;
+}
+.article-details .other span
+{
+    margin-right: 10px;
+}
+
+.article-details .action
+{
+    margin: 10px;
+    padding: 10px;
+    border: 1px dashed #808080;
+}
+
+.article-details .category
+{
+    padding: 10px;
+    margin-top: 20px;
+}
+.article-details .category span
+{
+    margin: 5px;
+    border: 1px solid #C0C0C0;
+    background-color: #E8E8E8;
+    padding: 5px;
+}
+.article-details .tags
+{
+    padding: 10px;
+}
+.article-details .tags span
+{
+    margin: 5px;
+    border: 1px solid #C0C0C0;
+    background-color: #E8E8E8;
+    padding: 5px;
+}
+
+.home-table-layout
+{
+    border: 1px solid #EEEEEE;
+}
+
+.home-table-layout td
+{
+    border: 0px solid #FFFFFF;
+}
+
+.home-article-list
+{
+    padding: 10px;
+}
+
+.home-article-list-item
+{
+    padding: 10px;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-bottom-color: #999999;
+}
+
+.home-article-list-item .avatar
+{
+    display: inline-block;
+    float: left;
+}
+
+.home-article-list-item .avatar img
+{
+    padding: 5px;
+    border: 1px solid #CCCCCC;
+    width: 60px;
+    height: 60px;
+}
+
+.home-article-list-item .article
+{
+    margin-left: 100px;
+}
+
+.home-article-list-item .article .title
+{
+}
+.home-article-list-item .article .title a
+{
+    color: #006666;
+    text-decoration: none;
+}
+.home-article-list-item .article .content
+{
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 40px;
+}
+.home-article-list-item .article .foot
+{
+    color: #999999;
+}
+.home-article-list-item .article .foot span
+{
+    margin-right: 10px;
+}
+
+
+.rank-box
+{
+    padding: 10px 0 15px 0;
+    border-bottom: 1px dotted #c8c8c8;
+    list-style: none;
+}
+
+.rank-box h3
+{
+    color: #c00;
+    font: normal 18px/30px "Microsoft YaHei";
+    border-bottom: 2px #333 solid;
+    margin-bottom: 15px;
+}
+.rank-box ul
+{
+    list-style: none;
+}
+.rank-box li
+{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    
+}
+
+.rank-box li a, .rank-box li a:link
+{
+    color: #333;
+    text-decoration: none;
+    cursor: auto;
+    font-size: 18px;
+    
+}
+.rank-box li a:hover
+{
+    color: #FF0000;
+}

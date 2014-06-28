@@ -1,0 +1,5 @@
+D:\DreamZoom\DZ.Web\DZ.Web\bin\DZ.Web.dll
+D:\DreamZoom\DZ.Web\DZ.Web\bin\DZ.Web.pdb
+D:\DreamZoom\DZ.Web\DZ.Web\obj\Debug\ResolveAssemblyReference.cache
+D:\DreamZoom\DZ.Web\DZ.Web\obj\Debug\DZ.Web.dll
+D:\DreamZoom\DZ.Web\DZ.Web\obj\Debug\DZ.Web.pdb

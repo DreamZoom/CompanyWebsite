@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_companyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="db_companyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tAccounts" EntityType="db_companyModel.tAccount" />
+    <EntitySet Name="tArticles" EntityType="db_companyModel.tArticle" />
+    <EntitySet Name="tCategories" EntityType="db_companyModel.tCategory" />
+    <EntitySet Name="tTags" EntityType="db_companyModel.tTag" />
+    <AssociationSet Name="tCategoryArticle" Association="db_companyModel.tCategoryArticle">
+      <End Role="tArticle" EntitySet="tArticles" />
+      <End Role="tCategory" EntitySet="tCategories" />
+    </AssociationSet>
+    <AssociationSet Name="tTagsArticle" Association="db_companyModel.tTagsArticle">
+      <End Role="tArticle" EntitySet="tArticles" />
+      <End Role="tTag" EntitySet="tTags" />
+    </AssociationSet>
+    <AssociationSet Name="tUserArticle" Association="db_companyModel.tUserArticle">
+      <End Role="tAccount" EntitySet="tAccounts" />
+      <End Role="tArticle" EntitySet="tArticles" />
+    </AssociationSet>
+    <EntitySet Name="tUserAvatars" EntityType="db_companyModel.tUserAvatar" />
+    <EntitySet Name="tUserContacts" EntityType="db_companyModel.tUserContact" />
+    <EntitySet Name="tUserInfoes" EntityType="db_companyModel.tUserInfo" />
+    <AssociationSet Name="tUserCollect" Association="db_companyModel.tUserCollect">
+      <End Role="tAccount" EntitySet="tAccounts" />
+      <End Role="tArticle" EntitySet="tArticles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tAccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="RegisterTime" Nullable="false" />
+    <NavigationProperty Name="tArticles" Relationship="db_companyModel.tUserArticle" FromRole="tAccount" ToRole="tArticle" />
+    <NavigationProperty Name="CollectArticles" Relationship="db_companyModel.tUserCollect" FromRole="tAccount" ToRole="tArticle" />
+  </EntityType>
+  <EntityType Name="tArticle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Author" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="AddTime" Nullable="false" />
+    <Property Type="Int32" Name="ReadCount" Nullable="false" />
+    <Property Type="Int32" Name="UpCount" Nullable="false" />
+    <Property Type="Int32" Name="DownCount" Nullable="false" />
+    <Property Type="Int32" Name="State" Nullable="false" />
+    <NavigationProperty Name="tCategories" Relationship="db_companyModel.tCategoryArticle" FromRole="tArticle" ToRole="tCategory" />
+    <NavigationProperty Name="tTags" Relationship="db_companyModel.tTagsArticle" FromRole="tArticle" ToRole="tTag" />
+    <NavigationProperty Name="tAccounts" Relationship="db_companyModel.tUserArticle" FromRole="tArticle" ToRole="tAccount" />
+    <NavigationProperty Name="tAccounts1" Relationship="db_companyModel.tUserCollect" FromRole="tArticle" ToRole="tAccount" />
+  </EntityType>
+  <EntityType Name="tCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ParentId" Nullable="false" />
+    <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CategoryPath" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="CategorySort" Nullable="false" />
+    <NavigationProperty Name="tArticles" Relationship="db_companyModel.tCategoryArticle" FromRole="tCategory" ToRole="tArticle" />
+  </EntityType>
+  <EntityType Name="tTag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="TagName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ClickCount" Nullable="false" />
+    <NavigationProperty Name="tArticles" Relationship="db_companyModel.tTagsArticle" FromRole="tTag" ToRole="tArticle" />
+  </EntityType>
+  <Association Name="tCategoryArticle">
+    <End Type="db_companyModel.tArticle" Role="tArticle" Multiplicity="*" />
+    <End Type="db_companyModel.tCategory" Role="tCategory" Multiplicity="*" />
+  </Association>
+  <Association Name="tTagsArticle">
+    <End Type="db_companyModel.tArticle" Role="tArticle" Multiplicity="*" />
+    <End Type="db_companyModel.tTag" Role="tTag" Multiplicity="*" />
+  </Association>
+  <Association Name="tUserArticle">
+    <End Type="db_companyModel.tAccount" Role="tAccount" Multiplicity="*" />
+    <End Type="db_companyModel.tArticle" Role="tArticle" Multiplicity="*" />
+  </Association>
+  <EntityType Name="tUserAvatar">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="SmallAvatar" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BigAvatar" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tUserContact">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="QQ" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MSN" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tUserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="RealName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Sex" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="Birthday" />
+    <Property Type="String" Name="Post" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="tUserCollect">
+    <End Type="db_companyModel.tAccount" Role="tAccount" Multiplicity="*" />
+    <End Type="db_companyModel.tArticle" Role="tArticle" Multiplicity="*" />
+  </Association>
+</Schema>

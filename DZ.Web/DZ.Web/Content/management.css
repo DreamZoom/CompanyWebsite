@@ -1,0 +1,43 @@
+﻿body {
+}
+
+.category
+{
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.articles
+{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-bottom-color: #CCCCCC;
+}
+.articles .title
+{
+    font-size: 18px;
+    padding: 5px;
+}
+.articles .other
+{
+    color: #C0C0C0;
+    padding: 5px;
+}
+.floatRight
+{
+    float: right;
+}
+
+.floatLeft
+{
+    float: left;
+}
+
+.clear
+{
+    clear: both;
+}

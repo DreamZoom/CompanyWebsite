@@ -1,0 +1,105 @@
+﻿a
+{
+    text-decoration: none;
+}
+
+
+.uc-body
+{
+    background: #fafdfc;
+    border: 1px solid #f1f1f1;
+    border-top: 0;
+}
+
+.uc-aside
+{
+    width: 170px;
+    margin: 0;
+    position: relative;
+    min-height: 200px;
+    z-index: 9;
+}
+
+.uc-main
+{
+    background: #fff;
+    padding: 10px;
+    border-left: 1px solid #f1f1f1;
+    min-height: 650px;
+    _right: 0;
+    _left: -3px;
+    _margin-left: 0;
+    _margin-right: -3px;
+}
+
+table, table tr, table td
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+.uc-nav li
+{
+    list-style: none;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-bottom-color: #CCCCCC;
+}
+
+.uc-nav a,.uc-nav a:link
+{
+    display: block;
+    border-right: 3px solid #fafdfc;
+    color: #333;
+    padding: 13px 0 13px 25px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.uc-nav a:hover
+{
+    border-right: 3px solid #ddede8;
+    background: #ddede8;
+    text-decoration: none;
+}
+
+
+.edit-title
+{
+     width: 300px;
+}
+
+.articles
+{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-bottom-color: #CCCCCC;
+}
+.articles .title
+{
+    font-size: 18px;
+    padding: 5px;
+}
+.articles .other
+{
+    color: #C0C0C0;
+    padding: 5px;
+}
+
+.floatRight
+{
+    float: right;
+}
+
+.floatLeft
+{
+    float: left;
+}
+
+.clear
+{
+    clear: both;
+}

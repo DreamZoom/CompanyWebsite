@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_companyModelStoreContainer" CdmEntityContainer="db_companyEntities">
+    <EntitySetMapping Name="tAccounts">
+      <EntityTypeMapping TypeName="db_companyModel.tAccount">
+        <MappingFragment StoreEntitySet="tAccount">
+          <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tArticles">
+      <EntityTypeMapping TypeName="db_companyModel.tArticle">
+        <MappingFragment StoreEntitySet="tArticle">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="DownCount" ColumnName="DownCount" />
+          <ScalarProperty Name="UpCount" ColumnName="UpCount" />
+          <ScalarProperty Name="ReadCount" ColumnName="ReadCount" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tCategories">
+      <EntityTypeMapping TypeName="db_companyModel.tCategory">
+        <MappingFragment StoreEntitySet="tCategory">
+          <ScalarProperty Name="CategorySort" ColumnName="CategorySort" />
+          <ScalarProperty Name="CategoryPath" ColumnName="CategoryPath" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTags">
+      <EntityTypeMapping TypeName="db_companyModel.tTag">
+        <MappingFragment StoreEntitySet="tTags">
+          <ScalarProperty Name="ClickCount" ColumnName="ClickCount" />
+          <ScalarProperty Name="TagName" ColumnName="TagName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="tCategoryArticle" TypeName="db_companyModel.tCategoryArticle" StoreEntitySet="tCategoryArticle">
+      <EndProperty Name="tCategory">
+        <ScalarProperty Name="Id" ColumnName="CategoryId" />
+      </EndProperty>
+      <EndProperty Name="tArticle">
+        <ScalarProperty Name="Id" ColumnName="ArticleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="tTagsArticle" TypeName="db_companyModel.tTagsArticle" StoreEntitySet="tTagsArticle">
+      <EndProperty Name="tTag">
+        <ScalarProperty Name="Id" ColumnName="TagId" />
+      </EndProperty>
+      <EndProperty Name="tArticle">
+        <ScalarProperty Name="Id" ColumnName="ArticleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="tUserArticle" TypeName="db_companyModel.tUserArticle" StoreEntitySet="tUserArticle">
+      <EndProperty Name="tArticle">
+        <ScalarProperty Name="Id" ColumnName="ArticleId" />
+      </EndProperty>
+      <EndProperty Name="tAccount">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="tUserAvatars">
+      <EntityTypeMapping TypeName="db_companyModel.tUserAvatar">
+        <MappingFragment StoreEntitySet="tUserAvatar">
+          <ScalarProperty Name="BigAvatar" ColumnName="BigAvatar" />
+          <ScalarProperty Name="SmallAvatar" ColumnName="SmallAvatar" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tUserContacts">
+      <EntityTypeMapping TypeName="db_companyModel.tUserContact">
+        <MappingFragment StoreEntitySet="tUserContact">
+          <ScalarProperty Name="MSN" ColumnName="MSN" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tUserInfoes">
+      <EntityTypeMapping TypeName="db_companyModel.tUserInfo">
+        <MappingFragment StoreEntitySet="tUserInfo">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="tUserCollect" TypeName="db_companyModel.tUserCollect" StoreEntitySet="tUserCollect">
+      <EndProperty Name="tArticle">
+        <ScalarProperty Name="Id" ColumnName="ArticleId" />
+      </EndProperty>
+      <EndProperty Name="tAccount">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
